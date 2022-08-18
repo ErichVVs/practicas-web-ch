@@ -1,0 +1,14 @@
+body {
+    background-color: tomato;
+    margin: 0;
+}
+
+.eye {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    left: 45%;
+    top: 25%;
+}
