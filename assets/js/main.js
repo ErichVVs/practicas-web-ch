@@ -28,10 +28,10 @@ let output = {
         end: 75,
         current: 0,
     }
-};
+}
 
-output.x.range = output.x.end - output.x.start;
-output.y.range = output.y.end - output.y.start;
+output.x.range = (output.x.end - output.x.start);
+output.y.range = (output.y.end - output.y.start);
 
 let handlerMouseMove = function (event) {
 
@@ -43,15 +43,23 @@ let handlerMouseMove = function (event) {
     input.mouseY.fraction = 
         (input.mouseY.current - input.mouseY.start) / input.mouseY.range;
 
-    output.x.current = output.x.start + output.x.range * input.mouseX.fraction;
-    output.y.current = output.y.start + output.y.range * input.mouseY.fraction;
+    output.x.current = output.x.start + (output.x.range * input.mouseX.fraction);
+    output.y.current = output.y.start + (output.y.range * input.mouseY.fraction);
 
     pupilArray.forEach(function (pupil, k) {
         pupil.style.transform = 
-            "translate(" + output.x.current + "px," + output.y.current + "px)";
+            "translate(" +output.x.current + "px," + output.y.current + "px)";
     });
-};
+}
 
-let handlerResize = function () {};
+let handlerResize = function () {
+    input.mouseX.end = window.innerWidth;
+    input.mouseX.range = input.mouseX.end - input.mouseX.start;
+
+    input.mouseY.end = window.innerHeight;
+    input.mouseY.range = input.mouseY.end - input.mouseY.start;
+
+}
 
 window.addEventListener("mousemove", handlerMouseMove);
+window.addEventListener('resize', handlerResize);
